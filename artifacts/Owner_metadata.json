@@ -1,0 +1,85 @@
+{
+	"compiler": {
+		"version": "0.5.2+commit.1df8f40c"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"token.sol": "Owner"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/GSN/Context.sol": {
+			"keccak256": "0x90a3995645af7562d84b9d69363ffa5ae7217714ab61e951bf7bc450f40e4061",
+			"urls": [
+				"bzzr://51482c01bddf23793bddee43b60ab9578a62948a4f2082def24ea792a553b055"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/access/Roles.sol": {
+			"keccak256": "0xb002c378d7b82a101bd659c341518953ca0919d342c0a400196982c0e7e7bcdb",
+			"urls": [
+				"bzzr://bd34c1ce05b5b2b3a62fc02e160f6805b1cadd476854664f433c685b2fda8dad"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/access/roles/MinterRole.sol": {
+			"keccak256": "0xbe8eef6f2cb4e427f5c5d8a76865ccd06e55a4f1d6671ba312d45bfa705aedbf",
+			"urls": [
+				"bzzr://946a26eebf5d294534471d07c4dc449ce3123e9fc2994bdfcd99dff1d09cc1af"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/math/SafeMath.sol": {
+			"keccak256": "0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076",
+			"urls": [
+				"bzzr://292843005e754e752644f767477ec5ad7a1ffc91ddb18c38b8079c62f3993cad"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/token/ERC20/ERC20.sol": {
+			"keccak256": "0xb15af804e2bc97db51e4e103f13de9fe13f87e6b835d7a88c897966c0e58506e",
+			"urls": [
+				"bzzr://6200c125af376381ae6c5415b8f3c1cb83889be20a7a51d67ac607487a10313b"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/token/ERC20/ERC20Mintable.sol": {
+			"keccak256": "0xa2b957cf89692c504962afb7506999155f83385373f808243246cd5879de5940",
+			"urls": [
+				"bzzr://812521b94ef1bd30b0a93e14a97a0e79e2bf4cb607aa47c21c8177966a79fd1a"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0xe5bb0f57cff3e299f360052ba50f1ea0fff046df2be070b6943e0e3c3fdad8a9",
+			"urls": [
+				"bzzr://cf2d583b8dce38d0617fdcd65f2fd9f126fe17b7f683b5a515ea9d2762d8b062"
+			]
+		},
+		"token.sol": {
+			"keccak256": "0xfce5c89298e55ab9631053b23b26b2ca59391e0d08059f6e9a0bb69e9fe197c3",
+			"urls": [
+				"bzzr://c3ca333a12603fd150b69129fad360ef4417625312cde6df5bab32844707d031"
+			]
+		}
+	},
+	"version": 1
+}

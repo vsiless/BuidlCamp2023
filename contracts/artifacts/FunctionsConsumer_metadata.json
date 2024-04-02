@@ -1,0 +1,582 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "oracle",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "EmptyArgs",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "EmptySecrets",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "EmptySource",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "RequestIsAlreadyPending",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "RequestIsNotPending",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SenderIsNotRegistry",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "requestId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "result",
+						"type": "bytes"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "err",
+						"type": "bytes"
+					}
+				],
+				"name": "OCRResponse",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferRequested",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "id",
+						"type": "bytes32"
+					}
+				],
+				"name": "RequestFulfilled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "id",
+						"type": "bytes32"
+					}
+				],
+				"name": "RequestSent",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "acceptOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "oracleAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "requestId",
+						"type": "bytes32"
+					}
+				],
+				"name": "addSimulatedRequestId",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "enum Functions.Location",
+								"name": "codeLocation",
+								"type": "uint8"
+							},
+							{
+								"internalType": "enum Functions.Location",
+								"name": "secretsLocation",
+								"type": "uint8"
+							},
+							{
+								"internalType": "enum Functions.CodeLanguage",
+								"name": "language",
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "source",
+								"type": "string"
+							},
+							{
+								"internalType": "bytes",
+								"name": "secrets",
+								"type": "bytes"
+							},
+							{
+								"internalType": "string[]",
+								"name": "args",
+								"type": "string[]"
+							}
+						],
+						"internalType": "struct Functions.Request",
+						"name": "req",
+						"type": "tuple"
+					},
+					{
+						"internalType": "uint64",
+						"name": "subscriptionId",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint32",
+						"name": "gasLimit",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "gasPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "estimateCost",
+				"outputs": [
+					{
+						"internalType": "uint96",
+						"name": "",
+						"type": "uint96"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "source",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes",
+						"name": "secrets",
+						"type": "bytes"
+					},
+					{
+						"internalType": "enum Functions.Location",
+						"name": "secretsLocation",
+						"type": "uint8"
+					},
+					{
+						"internalType": "string[]",
+						"name": "args",
+						"type": "string[]"
+					},
+					{
+						"internalType": "uint64",
+						"name": "subscriptionId",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint32",
+						"name": "gasLimit",
+						"type": "uint32"
+					}
+				],
+				"name": "executeRequest",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getDONPublicKey",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "requestId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes",
+						"name": "response",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "err",
+						"type": "bytes"
+					}
+				],
+				"name": "handleOracleFulfillment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "latestError",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "latestRequestId",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "latestResponse",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "oracle",
+						"type": "address"
+					}
+				],
+				"name": "updateOracleAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"params": {
+						"oracle": "- The FunctionsOracle contract"
+					}
+				},
+				"estimateCost((uint8,uint8,uint8,string,bytes,string[]),uint64,uint32,uint256)": {
+					"params": {
+						"gasLimit": "gas limit for the fulfillment callback",
+						"req": "The initialized Functions.Request",
+						"subscriptionId": "The subscription ID"
+					},
+					"returns": {
+						"_0": "billedCost Cost in Juels (1e18) of LINK"
+					}
+				},
+				"executeRequest(string,bytes,uint8,string[],uint64,uint32)": {
+					"params": {
+						"args": "List of arguments accessible from within the source code",
+						"gasLimit": "Maximum amount of gas used to call the client contract's `handleOracleFulfillment` function",
+						"secrets": "Encrypted secrets payload",
+						"secretsLocation": "Location of encrypted secrets (0 for inline, 1 for remote)",
+						"source": "JavaScript source code",
+						"subscriptionId": "Funtions billing subscription ID"
+					},
+					"returns": {
+						"_0": "Functions request ID"
+					}
+				},
+				"getDONPublicKey()": {
+					"details": "All Oracles nodes have the corresponding private key needed to decrypt the secrets encrypted with the public key",
+					"returns": {
+						"_0": "publicKey DON's public key"
+					}
+				},
+				"handleOracleFulfillment(bytes32,bytes,bytes)": {
+					"params": {
+						"err": "Aggregated error either from the user code or from the execution pipeline. Either response or error parameter will be set, but never both.",
+						"requestId": "The requestId returned by FunctionsClient.sendRequest().",
+						"response": "Aggregated response from the user code."
+					}
+				},
+				"updateOracleAddress(address)": {
+					"params": {
+						"oracle": "New oracle address"
+					}
+				}
+			},
+			"title": "Functions Consumer contract",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"acceptOwnership()": {
+					"notice": "Allows an ownership transfer to be completed by the recipient."
+				},
+				"constructor": {
+					"notice": "Executes once when a contract is created to initialize state variables"
+				},
+				"estimateCost((uint8,uint8,uint8,string,bytes,string[]),uint64,uint32,uint256)": {
+					"notice": "Estimate the total cost that will be charged to a subscription to make a request: gas re-imbursement, plus DON fee, plus Registry fee"
+				},
+				"executeRequest(string,bytes,uint8,string[],uint64,uint32)": {
+					"notice": "Send a simple request "
+				},
+				"getDONPublicKey()": {
+					"notice": "Returns the DON's secp256k1 public key used to encrypt secrets"
+				},
+				"handleOracleFulfillment(bytes32,bytes,bytes)": {
+					"notice": "Chainlink Functions response handler called by the designated transmitter node in an OCR round."
+				},
+				"owner()": {
+					"notice": "Get the current owner"
+				},
+				"transferOwnership(address)": {
+					"notice": "Allows an owner to begin transferring ownership to a new address, pending."
+				},
+				"updateOracleAddress(address)": {
+					"notice": "Allows the Functions oracle address to be updated"
+				}
+			},
+			"notice": "This contract is a demonstration of using Functions.NOT FOR PRODUCTION USE",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/TEST.sol": "FunctionsConsumer"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@chainlink/contracts/src/v0.8/ConfirmedOwner.sol": {
+			"keccak256": "0x99d0b0786fe368970009c703f2249bfbc56340ddf1a28b60d2915bb58c34cd72",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://af0371c1af45db651823b9a3d5af761b08243c78f105166342eee28de356c8dd",
+				"dweb:/ipfs/QmPnC9qNDKwJFd5unwLb9pxjrutoe8MWjm5EXHTxq2kJ4x"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/ConfirmedOwnerWithProposal.sol": {
+			"keccak256": "0xa2f137a1d066795aeac76226e58f33c982278cdd34b4f09e5a2243d5a0924654",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a73f185d79d82e6d9baa531d55ffb88c80def1f6187dff93d3df6b2cb5ab7187",
+				"dweb:/ipfs/QmVZEePJvcN1KxSTaD5rhKhaMBWHqs6ZeZ5s17Ft6mR5hJ"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/interfaces/OwnableInterface.sol": {
+			"keccak256": "0xb8b3a97783dddc198b790c4cec1eda7fb47aa38cbaea6555220d0ed8c735c086",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://acf7ed6aff47fbddeff1b85e1225a717dfa8bfb3ab89db0e6564346afcf03693",
+				"dweb:/ipfs/QmQQn5sKn1ARbt1WhYoHwfTJhK8fbQi8MbDQeHxGXTPbPE"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/vendor/BufferChainlink.sol": {
+			"keccak256": "0x89388a631c16ad993e4d76d8d19e08ae98e1397f5dfdfb5f9c0b91015df4cf5d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://88cb96caa94128821daec5478c0f3646902007b81a0604b2e3ab79ea2f40b056",
+				"dweb:/ipfs/Qmd1nu9CpgouPmukNQpZThxKgPZAayXxqBfwbDVHfMrCrF"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/vendor/CBORChainlink.sol": {
+			"keccak256": "0x08bda450d4dc1d17147fd29810234d35e2c437f1a99be733cfa7ee516db08a48",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d47a793b314afe9cd82fcf05ffe4ebbfa5504c2decc83004edbb3b2069d4f0c3",
+				"dweb:/ipfs/Qmd2YLSiS8xeeXqireh6qJgTTwVY2VscZpv2cQBU8gkEJT"
+			]
+		},
+		"contracts/TEST.sol": {
+			"keccak256": "0xd43c5543a86303f02dab7d6d3e3f4a2f362de3276913c9fad72b2fc8695df236",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://df0bb39f5341d561985755a1015ff04da5236c0806e8df17977e53b50c230585",
+				"dweb:/ipfs/QmRbmniNbkijtEEPb5aUBde3EKR4TVnKt4fp7AFVmu9Jo9"
+			]
+		},
+		"https://github.com/smartcontractkit/functions-hardhat-starter-kit/blob/main/contracts/dev/functions/Functions.sol": {
+			"keccak256": "0x04b19155d9d49e24316708135c9b810fd02724b9facebb7c727b8578539ddfd0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2f595d1ba72fb8476e9de75911edb99ac8163f161b9671e7aefe122d030070fd",
+				"dweb:/ipfs/QmZZbU23HpDycHPzFpLYsgLmFrgrShBRTAWVVLcRa6vcSY"
+			]
+		},
+		"https://github.com/smartcontractkit/functions-hardhat-starter-kit/blob/main/contracts/dev/functions/FunctionsClient.sol": {
+			"keccak256": "0x99c30b24e95b34d01b29a7437408948d1e8292294af198284551ff7196d6d73b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9ca054e15859640990ab5c865e9bbb24941982377c395adc3dc88930ce94eeaa",
+				"dweb:/ipfs/QmNWEZDgZKQQqVk5BYhcRPQWoN2f5dyrCi4fUaPz6qpMxv"
+			]
+		},
+		"https://github.com/smartcontractkit/functions-hardhat-starter-kit/blob/main/contracts/dev/interfaces/FunctionsBillingRegistryInterface.sol": {
+			"keccak256": "0xac8c00e6634411559840e1962826ece125dd631879e7458897e573ec85cf7490",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8f6eb0b712bdc884414d656a4cd8111b0fbc6b58e171aacad08ad0d6ec31cb84",
+				"dweb:/ipfs/QmcnZdnuoeCn8XkohX7TdZveNA2jM9UECBUHV3YPnV3aAt"
+			]
+		},
+		"https://github.com/smartcontractkit/functions-hardhat-starter-kit/blob/main/contracts/dev/interfaces/FunctionsClientInterface.sol": {
+			"keccak256": "0xd5c899b894dc62548149681ee46f2027a6dac18eea67663069e496ea48e4f1fb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f50b13face4c1e666c94536714d576fa9703d6d2f4436de087bf819c56cf7a52",
+				"dweb:/ipfs/QmW5MCqr3zd3yTZzyc2WWUiAqzuxHW1eUruchHpY58N221"
+			]
+		},
+		"https://github.com/smartcontractkit/functions-hardhat-starter-kit/blob/main/contracts/dev/interfaces/FunctionsOracleInterface.sol": {
+			"keccak256": "0x000e85694020a044911174ee5492f44836080cf2efd45eddcef4d28aae82d58f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://41df89621a1c1f1f0ec91a2c816750bb7b0f79cd4a59350aab64e32d07702882",
+				"dweb:/ipfs/QmWsNo9phLgnqnjZD6h8CyFZkVyrddp1D8etzRtGMuvsbV"
+			]
+		}
+	},
+	"version": 1
+}
